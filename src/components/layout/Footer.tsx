@@ -46,7 +46,7 @@ export function Footer() {
             hello@ckrtech.dev
           </a>
           <span className="font-body-sm text-body-sm text-on-surface-variant">
-            İstanbul & Uzaktan / Global
+            Akhisar, Manisa & Uzaktan / Global
           </span>
         </div>
       </div>

@@ -24,11 +24,16 @@ export function Navbar() {
     };
   }, [open]);
 
+  // The hero behind the navbar is a dark, full-bleed video, so before the
+  // user scrolls we render light text directly over it; once a light,
+  // blurred bar appears behind the nav we switch back to dark text.
+  const lightMode = !scrolled && !open;
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 w-full transition-all duration-300",
-        scrolled
+        scrolled || open
           ? "border-b border-surface-container bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.02)]"
           : "border-b border-transparent bg-transparent"
       )}
@@ -36,7 +41,10 @@ export function Navbar() {
       <div className="container-page flex h-16 items-center justify-between">
         <a
           href="#top"
-          className="font-display text-headline-sm text-on-surface"
+          className={cn(
+            "font-display text-headline-sm transition-colors",
+            lightMode ? "text-white" : "text-on-surface"
+          )}
         >
           CKR TECH
         </a>
@@ -46,7 +54,12 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-label-md text-label-md text-on-surface-variant transition-colors hover:text-on-surface"
+              className={cn(
+                "font-label-md text-label-md transition-colors",
+                lightMode
+                  ? "text-white/75 hover:text-white"
+                  : "text-on-surface-variant hover:text-on-surface"
+              )}
             >
               {link.label}
             </a>
@@ -54,14 +67,26 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center md:flex">
-          <Button href="#iletisim" variant="primary" className="h-10 px-6 py-0 shadow-none">
-            İletişime Geç
-          </Button>
+          {lightMode ? (
+            <a
+              href="#iletisim"
+              className="inline-flex h-10 items-center justify-center rounded-xl bg-white px-6 font-label-md text-label-md font-medium text-on-surface transition-colors hover:bg-primary-fixed-dim"
+            >
+              İletişime Geç
+            </a>
+          ) : (
+            <Button href="#iletisim" variant="primary" className="h-10 px-6 py-0 shadow-none">
+              İletişime Geç
+            </Button>
+          )}
         </div>
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-on-surface md:hidden"
+          className={cn(
+            "inline-flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden",
+            lightMode ? "text-white" : "text-on-surface"
+          )}
           aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}

@@ -78,7 +78,7 @@ export function About() {
             <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-xl bg-surface-container-lowest/95 p-4 backdrop-blur-md">
               <div>
                 <div className="font-label-md text-label-md font-bold text-on-surface">
-                  İstanbul & Uzaktan / Global
+                  Akhisar, Manisa & Uzaktan / Global
                 </div>
                 <div className="font-code-sm text-code-sm text-secondary">
                   Mühendislik & Ürün Laboratuvarı

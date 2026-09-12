@@ -74,6 +74,11 @@ src/
   yapar ve gönderimi loglar; **canlıya almadan önce** bir e-posta sağlayıcısı
   (ör. Resend, Postmark) bağlamanız gerekir — dosyadaki yorum satırlarında
   örnek entegrasyon kodu bulunur.
+- Hero bölümündeki arka plan animasyonu (`HeroParticles.tsx`), açık kaynak ve
+  MIT lisanslı **tsParticles** kütüphanesiyle oluşturulan, bağlantılı
+  parçacıklardan oluşan teknolojik bir ağ görselidir. Harici video dosyasına
+  veya stok görsele ihtiyaç duymaz; tamamen koddan üretilir ve marka
+  renkleriyle uyumludur.
 - Google Fonts (`Inter`, `Plus Jakarta Sans`) `next/font/google` ile
   derleme sırasında self-host edilir; derleme adımının internet erişimine
   ihtiyacı vardır.
